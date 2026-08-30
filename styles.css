@@ -1,0 +1,427 @@
+/* ═══════════════════════════════════════════════════════════════
+   ComicFrame — styles.css
+   Bez frameworków, bez zależności.
+
+   TOŻSAMOŚĆ WZIĘTA Z IKONY, nie wymyślona od nowa: granatowe tło,
+   złoty akcent, rastrowe kropki i narożniki celownika. Ikona ma
+   dokładnie te cztery elementy i strona ma je powtarzać, żeby
+   listing w sklepie i strona wyglądały jak jedna rzecz.
+
+   Barwy złota pobrane próbnikiem wprost z `images/icon.png`
+   (#F9BA23 w dymku), nie dobrane na oko.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Granat — trzy poziomy głębi. Tło jest niemal czarne, tak jak
+     w ikonie; panele wychodzą z niego, zamiast na nim leżeć. */
+  --bg: #050B18;
+  --surface: #0E1730;
+  --surface-hi: #16223F;
+  --border: #22304F;
+  --border-hi: #35486F;
+
+  /* Złoto z ikony. `gold` to barwa dymku, `gold-hi` rozjaśnienie
+     na krawędzi, `gold-lo` cień pod spodem. */
+  --gold: #F9BA23;
+  --gold-hi: #FFD24A;
+  --gold-lo: #C88A10;
+  --on-gold: #0A0F19;
+
+  --ink: #F4F7FB;
+  --muted: #93A3B8;
+  --muted-dim: #6C7C93;
+  --up: #3FD18B;
+
+  --maxw: 1180px;
+  --radius: 18px;
+
+  /* Rastrowe kropki — sygnatura komiksu. Jeden gradient, używany
+     wielokrotnie; trzymany w zmiennej, żeby gęstość dało się
+     zmienić w jednym miejscu. */
+  --halftone: radial-gradient(circle at center, rgba(249, 186, 35, .16) 1.4px, transparent 1.6px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.65 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Archivo Black', 'Inter Tight', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-hi); }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap { width: min(100% - 40px, var(--maxw)); margin-inline: auto; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.gold-word { color: var(--gold); }
+
+/* ── Nawigacja ─────────────────────────────────────────────── */
+
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(5, 11, 24, .82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__inner {
+  display: flex; align-items: center; gap: 24px;
+  padding: 14px 0;
+}
+
+.brand { display: flex; align-items: center; gap: 11px; color: var(--ink); }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+.brand b {
+  font-family: 'Archivo Black', system-ui, sans-serif;
+  font-size: 19px; letter-spacing: -.01em;
+}
+
+.nav__links { display: flex; gap: 26px; margin-left: auto; }
+.nav__links a { color: var(--muted); font-size: 15px; font-weight: 500; }
+.nav__links a:hover { color: var(--ink); }
+
+@media (max-width: 780px) { .nav__links { display: none; } }
+
+/* ── Przyciski ─────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 13px 22px;
+  border-radius: 13px;
+  font-weight: 700; font-size: 15px;
+  border: 1px solid transparent;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+/* Tekst na złocie MUSI być ciemny. Biel na #F9BA23 daje ok. 2:1,
+   czyli poniżej każdego progu czytelności. */
+.btn--gold {
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+  color: var(--on-gold);
+  box-shadow: 0 8px 24px rgba(249, 186, 35, .22);
+}
+.btn--gold:hover { color: var(--on-gold); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(249, 186, 35, .3); }
+
+.btn--ghost {
+  background: var(--surface);
+  border-color: var(--border-hi);
+  color: var(--ink);
+}
+.btn--ghost:hover { color: var(--ink); background: var(--surface-hi); transform: translateY(-2px); }
+
+.stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* ── Sekcja hero ───────────────────────────────────────────── */
+
+.hero { position: relative; padding: 84px 0 72px; overflow: hidden; }
+
+.hero__bg { position: absolute; inset: 0; pointer-events: none; }
+
+/* Promienie z okładki na ikonie. Stożkowy gradient daje ten sam
+   efekt co rysowane linie, ale bez pliku graficznego. */
+.hero__rays {
+  position: absolute; left: 50%; top: -28%;
+  width: 130vmax; height: 130vmax; transform: translateX(-50%);
+  background: conic-gradient(from 200deg,
+    transparent 0deg 6deg, rgba(249, 186, 35, .05) 6deg 12deg,
+    transparent 12deg 18deg, rgba(249, 186, 35, .05) 18deg 24deg,
+    transparent 24deg 30deg, rgba(249, 186, 35, .05) 30deg 36deg,
+    transparent 36deg 42deg, rgba(249, 186, 35, .05) 42deg 48deg,
+    transparent 48deg 140deg);
+  opacity: .8;
+}
+
+.hero__dots {
+  position: absolute; inset: 0;
+  background-image: var(--halftone);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 40%, transparent 100%);
+}
+
+.hero__glow {
+  position: absolute; left: 50%; top: -140px;
+  width: 760px; height: 560px; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(249, 186, 35, .14), transparent);
+}
+
+.hero__inner {
+  position: relative;
+  display: grid; grid-template-columns: 1.08fr .92fr;
+  gap: 56px; align-items: center;
+}
+
+.hero h1 { font-size: clamp(42px, 6.4vw, 76px); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 12px; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(249, 186, 35, .34);
+  background: rgba(249, 186, 35, .07);
+  padding: 7px 14px; border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.hero__lead {
+  font-size: clamp(17px, 2vw, 20px);
+  color: var(--muted); margin: 22px 0 0; max-width: 34em;
+}
+
+.hero__note { margin-top: 16px; font-size: 14px; color: var(--muted-dim); }
+
+/* Telefon w hero dostaje narożniki celownika — ten sam element,
+   który obramowuje ikonę. */
+.shot { position: relative; }
+
+/* Zrzut telefonu ma proporcje 1:2, wiec przy pelnej szerokosci kolumny
+   urosl na dwa ekrany i wypychal wszystko ponizej. Ograniczenie WYSOKOSCI,
+   nie szerokosci: przy niskim oknie kadr sam sie zwezi, zamiast wystawac. */
+.shot img {
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .55);
+  max-height: min(74vh, 620px);
+  width: auto;
+  margin-inline: auto;
+}
+
+/* Narozniki celownika — ten sam element, ktory obramowuje ikone.
+   `.shot` jest zwezone do szerokosci obrazu (`width: fit-content`),
+   inaczej narozniki trzymalyby sie krawedzi KOLUMNY siatki i wisialy
+   w powietrzu obok telefonu. */
+.shot { width: fit-content; margin-inline: auto; }
+.shot::before, .shot::after {
+  content: ''; position: absolute; width: 46px; height: 46px;
+  border: 5px solid var(--gold); border-radius: 4px;
+}
+.shot::before { top: -14px; left: -14px; border-right: 0; border-bottom: 0; }
+.shot::after { bottom: -14px; right: -14px; border-left: 0; border-top: 0; }
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 44px; }
+  .hero { padding-top: 56px; }
+}
+
+/* ── Pasek liczb ───────────────────────────────────────────── */
+
+.ledger { border-block: 1px solid var(--border); background: var(--surface); }
+
+.ledger__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+}
+
+.ledger__cell {
+  padding: 26px 20px; text-align: center;
+  border-left: 1px solid var(--border);
+}
+.ledger__cell:first-child { border-left: 0; }
+
+.ledger__label {
+  font-size: 12px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muted-dim); margin-bottom: 8px;
+}
+.ledger__num {
+  margin: 0;
+  font-family: 'Archivo Black', system-ui, sans-serif;
+  font-size: clamp(24px, 3.2vw, 34px); color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.ledger__num em { font-style: normal; color: var(--gold-lo); }
+
+.ledger__num--live { display: flex; align-items: center; justify-content: center; gap: 9px; color: var(--up); }
+.dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--up); box-shadow: 0 0 0 5px rgba(63, 209, 139, .16);
+}
+
+@media (max-width: 700px) {
+  .ledger__grid { grid-template-columns: repeat(2, 1fr); }
+  .ledger__cell:nth-child(3) { border-left: 0; }
+  .ledger__cell:nth-child(n+3) { border-top: 1px solid var(--border); }
+}
+
+/* ── Sekcje ────────────────────────────────────────────────── */
+
+.section { padding: 88px 0; }
+.section--alt { background: var(--surface); border-block: 1px solid var(--border); }
+
+.section__head { max-width: 42rem; margin-bottom: 46px; }
+.section__head h2 { font-size: clamp(30px, 4.4vw, 46px); }
+.section__head p { color: var(--muted); font-size: 18px; margin: 16px 0 0; }
+
+/* ── Panele (karty) ────────────────────────────────────────── */
+
+/* PANEL KOMIKSOWY: gruby kontur i twardy cień z przesunięciem,
+   jak kadr na stronie zeszytu. Zwykły miękki cień gubiłby
+   związek z ikoną. */
+.grid { display: grid; gap: 20px; }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+.panel {
+  position: relative;
+  background: var(--bg);
+  border: 2px solid var(--border-hi);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 6px 6px 0 rgba(249, 186, 35, .14);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.panel:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 rgba(249, 186, 35, .22);
+  border-color: var(--gold-lo);
+}
+
+.section--alt .panel { background: var(--bg); }
+
+.panel__icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: rgba(249, 186, 35, .12);
+  border: 1px solid rgba(249, 186, 35, .3);
+  color: var(--gold); font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.panel h3 { font-size: 20px; margin-bottom: 10px; }
+.panel p { color: var(--muted); margin: 0; font-size: 16px; }
+
+@media (max-width: 900px) { .grid--3 { grid-template-columns: 1fr; } .grid--2 { grid-template-columns: 1fr; } }
+
+/* ── Kroki ─────────────────────────────────────────────────── */
+
+.steps { counter-reset: krok; display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+
+.step {
+  position: relative; padding: 30px 26px 26px;
+  background: var(--bg);
+  border: 2px solid var(--border-hi); border-radius: var(--radius);
+}
+.step::before {
+  counter-increment: krok; content: counter(krok);
+  position: absolute; top: -19px; left: 24px;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+  color: var(--on-gold);
+  font-family: 'Archivo Black', system-ui, sans-serif; font-size: 17px;
+  box-shadow: 0 6px 16px rgba(249, 186, 35, .3);
+}
+.step h3 { font-size: 19px; margin: 10px 0 8px; }
+.step p { color: var(--muted); margin: 0; font-size: 16px; }
+
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; } }
+
+/* ── Galeria zrzutów ───────────────────────────────────────── */
+
+.shots {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+}
+.shots img {
+  border-radius: 16px;
+  border: 2px solid var(--border-hi);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+}
+
+@media (max-width: 980px) { .shots { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── FAQ ───────────────────────────────────────────────────── */
+
+.faq { display: grid; gap: 12px; max-width: 52rem; }
+
+.faq details {
+  background: var(--bg);
+  border: 2px solid var(--border-hi); border-radius: 14px;
+  padding: 18px 22px;
+}
+.faq summary {
+  cursor: pointer; font-weight: 600; font-size: 17px;
+  list-style: none; display: flex; justify-content: space-between; gap: 18px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--gold); font-size: 24px; line-height: 1; }
+.faq details[open] summary::after { content: '−'; }
+.faq p { color: var(--muted); margin: 14px 0 0; font-size: 16px; }
+
+/* ── Wezwanie końcowe ──────────────────────────────────────── */
+
+.cta { position: relative; padding: 92px 0; overflow: hidden; text-align: center; }
+.cta__dots {
+  position: absolute; inset: 0;
+  background-image: var(--halftone); background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 30%, transparent 100%);
+}
+.cta__inner { position: relative; }
+.cta h2 { font-size: clamp(30px, 5vw, 52px); }
+.cta p { color: var(--muted); font-size: 19px; margin: 18px auto 0; max-width: 34em; }
+.cta .stores { justify-content: center; }
+
+/* ── Stopka ────────────────────────────────────────────────── */
+
+.footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(--surface); }
+.footer__inner { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+.footer small { color: var(--muted-dim); font-size: 14px; }
+.footer nav { display: flex; gap: 22px; }
+.footer nav a { color: var(--muted); font-size: 14px; }
+.footer nav a:hover { color: var(--ink); }
+
+/* ── Odsłanianie przy przewijaniu ──────────────────────────── */
+
+/* Stan ukryty istnieje TYLKO gdy JavaScript dodał `html.motion`.
+   Bez skryptu wszystko jest widoczne od razu — animacja nie może
+   decydować o tym, czy treść w ogóle się pokaże. */
+.motion .reveal { opacity: 0; transform: translateY(18px); }
+.motion .reveal.is-in {
+  opacity: 1; transform: none;
+  transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion .reveal { opacity: 1; transform: none; }
+  .panel:hover, .btn:hover { transform: none; }
+}
+
+/* ── Strony prawne ─────────────────────────────────────────── */
+
+.legal { padding: 64px 0 88px; }
+.legal h1 { font-size: clamp(32px, 5vw, 46px); margin-bottom: 10px; }
+.legal .updated { color: var(--muted-dim); font-size: 14px; margin-bottom: 40px; }
+.legal h2 { font-size: 22px; margin: 38px 0 12px; }
+.legal p, .legal li { color: var(--muted); font-size: 16px; }
+.legal ul { padding-left: 20px; }
+.legal a { text-decoration: underline; }
