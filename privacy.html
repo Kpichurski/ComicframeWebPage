@@ -38,7 +38,7 @@
     <article>
         <header>
           <h1>Privacy Policy</h1>
-          <p>Last updated: 6 October 2026</p>
+          <p>Last updated: 8 October 2026</p>
         </header>
 
         <div>
@@ -62,7 +62,15 @@
               Your collections are stored on our server and linked to a device identifier rather than
               to your name, so they are kept when you reinstall the app.
             </li>
-            <li>We use PostHog for app analytics and crash reports, and RevenueCat to manage purchases.</li>
+            <li>
+              Your reading log and the prices you enter yourself are stored only on your device and are
+              never sent to our server.
+            </li>
+            <li>
+              We use PostHog for app analytics and crash reports, and RevenueCat to manage purchases. You
+              can turn analytics off in Settings → Privacy → Share Usage Data.
+            </li>
+            <li>You can delete all your data at any time in Settings → Privacy → Delete My Data.</li>
             <li>
               We do not show ads, we do not track you across other companies' apps or websites, and we
               do not sell your data.
@@ -136,12 +144,21 @@
             </li>
             <li>
               events describing how you use the app — for example opening the scanner, finishing a
-              scanning session, adding an issue, creating or deleting a collection, choosing an
-              edition or condition, viewing the Premium screen, and whether a purchase or restore
-              succeeded;
+              scanning session (how many issues it found, their total estimated value and how long it
+              took), adding an issue, creating or deleting a collection (with the number of issues and
+              their estimated value), choosing an edition or condition, viewing the Premium screen, the
+              plan and price you select, whether a purchase or restore succeeded, setting or removing
+              your own price (without the amount), and how you use the reading log (for example adding
+              comics to Up next or marking one as finished, with rounded counts but without titles,
+              notes, ratings or dates);
             </li>
             <li>crash and error reports, including technical details such as stack traces.</li>
           </ul>
+          <p>
+            Analytics are turned on by default. You can turn them off at any time in Settings → Privacy →
+            Share Usage Data; data sent before that stays with PostHog until it expires or until you ask
+            us to delete it.
+          </p>
           <p>
             Like any internet service, PostHog receives your IP address when the app sends data and
             may use it to estimate an approximate location, such as your country. We do not collect
@@ -172,17 +189,30 @@
             on our server, the error log may contain the request path and your device identifier.
           </p>
 
-          <h3>Information stored only on your device</h3>
+          <h3>Information stored on your device</h3>
           <ul>
             <li>settings, such as your app language and currency, and which introductory screens you have seen;</li>
             <li>the free scan counter and when it resets;</li>
             <li>which scanned issues have their price hidden until you upgrade;</li>
             <li>when the app last asked you to rate it;</li>
-            <li>cached copies of your collections and of exchange rates.</li>
+            <li>cached copies of your collections and of exchange rates;</li>
+            <li>
+              your reading log: the comics you plan to read, are reading or have finished, the days you
+              mark as read, finish dates, ratings and notes. The reading log is never sent to our
+              server. You can delete it in Settings → Privacy → Clear reading data;
+            </li>
+            <li>
+              prices you enter yourself for comics in your collections or in the scanner. They are used
+              only to show values in the app and are never sent to our server; your collections on our
+              server keep the market price.
+            </li>
           </ul>
           <p>
-            If you export a collection, the file is created on your device and goes only where you
-            choose to share it.
+            Some of these values, such as your currency and how many free scans you have used, are
+            also sent with analytics events, as described above. If you export a collection or your
+            reading log, the file is created on your device and goes only where you choose to share it.
+            Collection exports include the prices you entered yourself. Copies you have already shared
+            elsewhere are not removed when you delete your data in the app.
           </p>
 
           <h3>What we do not collect</h3>
@@ -236,10 +266,15 @@
           </ul>
           <p>
             We share information only with these providers, and only as far as they need it to provide
-            their service. We do not sell, rent or trade your information, and we do not share it with
-            advertisers. We may also disclose information if the law requires it, to protect our
-            rights or the safety of our users, or as part of a sale or transfer of the app, in which
-            case this policy continues to apply to your information.
+            their service. Every third party with whom we share user data, including the analytics and
+            purchase services listed above, provides the same or equal protection of user data as
+            stated in this Privacy Policy and as required by the App Store Review Guidelines.
+          </p>
+          <p>
+            We do not sell, rent or trade your information, and we do not share it with advertisers.
+            We may also disclose information if the law requires it, to protect our rights or the
+            safety of our users, or as part of a sale or transfer of the app, in which case this policy
+            continues to apply to your information.
           </p>
 
           <h2>International Transfers</h2>
@@ -254,18 +289,18 @@
           <ul>
             <li>
               Your collections, their value history and your device record are kept while you use the
-              app. Collections you delete in the app are deleted from our server. The rest is deleted
-              when you ask us to delete your data.
+              app. Collections you delete in the app are deleted from our server, and Settings → Privacy →
+              Delete My Data deletes everything we store about your device.
             </li>
             <li>Feedback is kept as long as we need it to handle your message and improve the app.</li>
             <li>Server error logs are kept only as long as needed for troubleshooting.</li>
-            <li>Analytics and crash data are kept for a limited period for analysis, or deleted earlier if you ask.</li>
+            <li>Analytics and crash data are kept for up to 12 months and then deleted, or deleted earlier if you ask.</li>
             <li>
               Purchase records are kept by RevenueCat, Apple and Google as long as needed to provide
               your purchases and to meet legal requirements.
             </li>
             <li>
-              Information stored only on your device is removed when you uninstall the app.
+              Information stored on your device is removed when you uninstall the app.
               Uninstalling does not delete the information stored on our server, and on iOS the device
               identifier in the Keychain may remain after you uninstall the app.
             </li>
@@ -279,11 +314,21 @@
               deleting a collection also deletes it from our server.
             </li>
             <li>
-              <strong>Deleting all your data</strong> — send a request from Settings → Share Feedback
-              in the app, or e-mail us. A request sent from the app automatically includes your device
-              identifier, so we can find your data. We will delete your collections, value history,
-              feedback and device record from our server, together with the analytics data linked to
-              your device identifier.
+              <strong>Analytics</strong> — turn off Settings → Privacy → Share Usage Data at any time to stop the
+              app from sending analytics and crash reports.
+            </li>
+            <li>
+              <strong>Reading log</strong> — delete it at any time in Settings → Privacy → Clear reading data.
+              This also removes its backup copies and exported files from your device.
+            </li>
+            <li>
+              <strong>Deleting all your data</strong> — use Settings → Privacy → Delete My Data in the app. This
+              immediately deletes your collections, value history, feedback and device record from our
+              server (server error logs are kept without your device identifier) and clears the app's
+              data on your device, including your reading log, your own prices and exported files.
+              Analytics data linked to your device identifier is deleted when it expires, after up to
+              12 months; e-mail us if you want it deleted sooner. Deleting your data does not cancel a
+              subscription, which you manage in your Apple ID or Google Play settings.
             </li>
             <li>
               <strong>Your rights</strong> — depending on where you live, you may have the right to

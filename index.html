@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ComicFrame — Point. Scan. Know what it&rsquo;s worth.</title>
-<meta name="description" content="ComicFrame identifies a comic from its cover with your phone camera, lists every printing with its own price, prices raw and CGC-graded copies, and tracks what your collection is worth. iOS and Android.">
+<meta name="description" content="ComicFrame identifies a comic from its cover with your phone camera, shows its editions and printings with their prices where available, compares raw and graded values, tracks what your collection is worth and keeps a reading log. iOS and Android.">
 <meta name="theme-color" content="#050B18">
 
 <!-- WDROŻENIE: przyjęto https://comicframe.happread.com jako adres produkcyjny.
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ComicFrame">
 <meta property="og:title" content="ComicFrame — Point. Scan. Know what it&rsquo;s worth.">
-<meta property="og:description" content="Point your camera at a cover. ComicFrame names the issue, shows every printing with its own price, and tracks what your shelf is worth.">
+<meta property="og:description" content="Point your camera at a cover. ComicFrame names the issue, shows its printings side by side with prices where available, and tracks what your shelf is worth.">
 <meta property="og:image" content="https://comicframe.happread.com/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,7 +24,7 @@
 <meta property="og:url" content="https://comicframe.happread.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ComicFrame — Point. Scan. Know what it&rsquo;s worth.">
-<meta name="twitter:description" content="Every printing priced separately. Raw and CGC. Your shelf, valued.">
+<meta name="twitter:description" content="Printings priced separately. Raw and graded. Your shelf, valued.">
 <meta name="twitter:image" content="https://comicframe.happread.com/images/og-image.png">
 
 <link rel="icon" href="images/favicon-32.png" sizes="32x32">
@@ -45,7 +45,7 @@
   "url": "https://comicframe.happread.com/",
   "image": "https://comicframe.happread.com/images/og-image.png",
   "installUrl": ["https://apps.apple.com/app/id6804273611", "https://play.google.com/store/apps/details?id=com.happread.comicframe"],
-  "description": "Identify a comic from its cover, see every printing priced separately, compare raw and CGC-graded values, and track what your collection is worth."
+  "description": "Identify a comic from its cover, see its printings priced separately where price data exists, compare raw and graded values, track what your collection is worth and keep a reading log."
 }
 </script>
 </head>
@@ -84,8 +84,9 @@
         <h1 id="hero-title" class="reveal">Point. Scan.<br>Know what<br>it&rsquo;s <span class="gold-word">worth.</span></h1>
         <p class="hero__lead reveal">
           Hold your camera over a cover. ComicFrame names the issue, then shows
-          <strong>every printing with its own price</strong> — first print, reprint,
-          facsimile, variant cover — because that difference is the price.
+          <strong>each printing side by side</strong> — first print, reprint,
+          facsimile, variant cover — with its own price where market data exists,
+          because that difference is the price.
         </p>
         <div class="stores reveal">
           <a class="btn btn--gold" href="https://apps.apple.com/app/id6804273611">App Store</a>
@@ -97,9 +98,9 @@
 
       <div class="shot reveal">
         <!-- SAM TELEFON, nie grafika sklepowa. Pelny kafelek z App Store niesie
-             wlasny naglowek („SCAN / ANY COMIC"), ktory obok <h1> czytalby sie
+             wlasny naglowek („SCAN / COMIC COVERS"), ktory obok <h1> czytalby sie
              jak drugi tytul strony. Pelne kafelki zostaja nizej, w galerii. -->
-        <img src="images/hero-phone.webp" alt="ComicFrame recognising a comic cover, with its value shown above the book." width="760" height="1581" loading="eager" fetchpriority="high">
+        <img src="images/hero-phone.webp" alt="ComicFrame recognising a comic cover, with its price shown above the book." width="760" height="1651" loading="eager" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -114,16 +115,16 @@
           <dd class="ledger__num">2.4M<em>+</em></dd>
         </div>
         <div class="ledger__cell">
-          <dt class="ledger__label">Printings priced</dt>
-          <dd class="ledger__num">Each</dd>
+          <dt class="ledger__label">Printings</dt>
+          <dd class="ledger__num">Priced apart</dd>
         </div>
         <div class="ledger__cell">
           <dt class="ledger__label">Grades</dt>
-          <dd class="ledger__num">Raw &amp; CGC</dd>
+          <dd class="ledger__num">Raw &amp; slab</dd>
         </div>
         <div class="ledger__cell">
-          <dt class="ledger__label">Prices</dt>
-          <dd class="ledger__num ledger__num--live"><span class="dot" aria-hidden="true"></span>Live</dd>
+          <dt class="ledger__label">Reading log</dt>
+          <dd class="ledger__num">Built in</dd>
         </div>
       </dl>
     </div>
@@ -146,20 +147,20 @@
 
         <article class="panel reveal">
           <div class="panel__icon" aria-hidden="true">▤</div>
-          <h3>Every printing, priced apart</h3>
-          <p>First print, later printing, facsimile and variant covers are separate books with separate markets. ComicFrame shows them side by side instead of averaging them into one wrong number.</p>
+          <h3>Each printing, priced apart</h3>
+          <p>First print, later printing, facsimile and variant covers are separate books with separate markets. ComicFrame shows them side by side, each with its own price where market data exists, instead of averaging them into one wrong number.</p>
         </article>
 
         <article class="panel reveal">
           <div class="panel__icon" aria-hidden="true">★</div>
           <h3>Raw and slabbed</h3>
-          <p>Switch between an ungraded copy and the CGC ladder. The gap between a 9.8 and a 9.4 is often larger than the price of the book itself.</p>
+          <p>Switch between an ungraded copy and the graded (slabbed) price ladder. The gap between a 9.8 and a 9.4 is often larger than the price of the book itself.</p>
         </article>
 
         <article class="panel reveal">
           <div class="panel__icon" aria-hidden="true">▲</div>
           <h3>A shelf that values itself</h3>
-          <p>Every issue you keep feeds one running total, with a chart behind it. You find out what the boxes in the garage are worth without opening a spreadsheet.</p>
+          <p>With Premium, every issue you keep feeds one running total, with a chart behind it. No price for your copy? Set your own — it stays on your phone and is clearly marked.</p>
         </article>
 
         <article class="panel reveal">
@@ -192,11 +193,11 @@
         </article>
         <article class="step reveal">
           <h3>Pick your printing</h3>
-          <p>If the issue has more than one edition, they appear with their prices. Choose the one on your shelf.</p>
+          <p>If the issue has more than one edition, they appear side by side, with prices where available. Choose the one on your shelf.</p>
         </article>
         <article class="step reveal">
           <h3>Keep it</h3>
-          <p>Add it to a collection with its grade. The total updates, and the chart remembers where it started.</p>
+          <p>Add it to a collection with its grade, and to your reading queue if you like. With Premium, the total updates and the chart remembers where it started.</p>
         </article>
       </div>
     </div>
@@ -207,14 +208,14 @@
     <div class="wrap">
       <div class="section__head reveal">
         <h2 id="screens-title">What it looks like.</h2>
-        <p>Scan, track, compare, spot.</p>
+        <p>Scan, compare, track, read.</p>
       </div>
 
       <div class="shots reveal">
-        <img src="images/01.webp" alt="Scanning a comic cover; the value appears above it in real time." width="900" height="1947" loading="lazy">
-        <img src="images/02.webp" alt="Collection screen with total portfolio value and a chart of how it changed." width="900" height="1947" loading="lazy">
-        <img src="images/03.webp" alt="Editions of one issue side by side, each with its own price, above the CGC grade ladder." width="900" height="1947" loading="lazy">
-        <img src="images/04.webp" alt="Issue detail showing market price, year, issue number and prices by condition." width="900" height="1947" loading="lazy">
+        <img src="images/01.webp" alt="Scanning a comic cover; the price appears above it." width="900" height="1947" loading="lazy">
+        <img src="images/02.webp" alt="Editions of one issue side by side with their prices, and prices by condition." width="900" height="1947" loading="lazy">
+        <img src="images/03.webp" alt="Collections screen with the portfolio value and its chart, a Premium feature." width="900" height="1947" loading="lazy">
+        <img src="images/04.webp" alt="Reading statistics with reading days, streaks and a monthly calendar." width="900" height="1947" loading="lazy">
       </div>
     </div>
   </section>
@@ -237,11 +238,23 @@
         </details>
         <details>
           <summary>Does it handle graded copies?</summary>
-          <p>Yes. You can switch between a raw copy and the CGC ladder, and the price follows the grade you pick rather than showing one figure for every condition.</p>
+          <p>Yes. You can switch between a raw copy and the graded (slabbed) ladder, and the price follows the grade you pick rather than showing one figure for every condition.</p>
         </details>
         <details>
           <summary>Do I need an account?</summary>
           <p>Not to scan. A collection is stored so it survives reinstalling the app, but nothing stops you from opening the camera and checking a book straight away.</p>
+        </details>
+        <details>
+          <summary>Can I keep track of what I read?</summary>
+          <p>Yes. The Reading tab keeps an Up next queue, the days you read, your streak, star ratings and notes. Your reading log stays on your phone and is never sent to our server.</p>
+        </details>
+        <details>
+          <summary>What if a comic has no price?</summary>
+          <p>Not every issue has price data. You can set your own price for any comic in your collection; it is clearly marked as yours, counts in your totals and stays on your phone.</p>
+        </details>
+        <details>
+          <summary>What is free and what is Premium?</summary>
+          <p>Scanning, a daily allowance of scans with prices, one collection and the reading log are free. Premium adds unlimited scans with prices, unlimited collections, the total value of your collections with its chart, and export of your collections and reading log.</p>
         </details>
         <details>
           <summary>Which platforms?</summary>
